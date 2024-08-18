@@ -1,31 +1,26 @@
-import androidx.compose.desktop.ui.tooling.preview.Preview
-import androidx.compose.material.Button
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.material.Scaffold
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Window
+import androidx.compose.ui.window.WindowState
 import androidx.compose.ui.window.application
-
-@Composable
-@Preview
-fun App() {
-    var text by remember { mutableStateOf("Hello, World!") }
-
-    MaterialTheme {
-        Button(onClick = {
-            text = "Hello, Desktop!"
-        }) {
-            Text(text)
-        }
-    }
-}
+import ui.DarkTheme
+import ui.components.Header
+import ui.components.TextEditor
 
 fun main() = application {
-    Window(onCloseRequest = ::exitApplication) {
-        App()
+    Window(
+        title = "Plain Note",
+        state = WindowState(width = 800.dp, height = 600.dp),
+        onCloseRequest = ::exitApplication
+    ) {
+        DarkTheme {
+            Scaffold(
+                topBar = {
+                    Header()
+                }
+            ) {
+                TextEditor()
+            }
+        }
     }
 }

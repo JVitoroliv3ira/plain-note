@@ -24,12 +24,24 @@ dependencies {
 
 compose.desktop {
     application {
-        mainClass = "MainKt"
+        mainClass = "Plain Note"
 
         nativeDistributions {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
             packageName = "plain-note"
             packageVersion = "1.0.0"
+
+            linux {
+                iconFile.set(project.file("src/main/resources/plain_note_icon.png"))
+            }
+
+            windows {
+                iconFile.set(project.file("src/main/resources/plain_note_icon.png"))
+            }
+
+            macOS {
+                iconFile.set(project.file("src/main/resources/plain_note_icon.png"))
+            }
         }
     }
 }
